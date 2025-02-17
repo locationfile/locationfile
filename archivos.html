@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Archivos</title>
+    <meta name="description" content="Ejemplo de PWA con Material Design" />
+    <script src="js/registraServiceWorker.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#fffbfe" />
+    <link rel="icon" sizes="32x32" href="favicon.ico" />
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="ungap/custom-elements.js"></script>
+
+    <!-- Configuración de todas las páginas con JavaSript. -->
+    <script type="module" src="js/configura.js"></script>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/transicion_completa.css" />
+    <link rel="stylesheet" href="css/transicion_pestanas.css">
+    <link rel="stylesheet" href="css/dark-hc.css">
+    <link rel="stylesheet" href="css/dark.css">
+    <link rel="stylesheet" href="css/light.css">
+    <link rel="stylesheet" href="css/light-mc.css">
+    <link rel="stylesheet" href="css/light-hc.css">
+   
+  </head>
+
+  <body>
+    <h1>Archivos y Cámara</h1>
+    <md-top-app-bar class="center-aligned">
+        <nav-tab-fixed id="tab"></nav-tab-fixed>
+        <!--<button is="md-menu-button" slot="navigation"></button>-->
+      </md-top-app-bar>
+    <p>
+      <label>
+        Foto de Móvil
+        <input type="file" accept="image/*" capture="camera" />
+      </label>
+    </p>
+    <p>
+      <label>
+        Video de Móvil
+        <input type="file" accept="video/*" capture="" />
+      </label>
+    </p>
+    <p>
+      <label>
+        Archivo
+        <input type="file" />
+      </label>
+    </p>
+
+    <nav-drw></nav-drw>
+  </body>
+</html>

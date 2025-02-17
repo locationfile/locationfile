@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+
+<head>
+
+ <meta charset="UTF-8">
+ <title>Chistes</title>
+ <meta name="description" content="Ejemplo de PWA con Material Design">
+ <script src="js/registraServiceWorker.js"></script>
+ <meta name="viewport" content="width=device-width">
+ <meta name="theme-color" content="#fffbfe">
+ <link rel="icon" sizes="32x32" href="favicon.ico">
+ <link rel="manifest" href="site.webmanifest">
+ <script src="ungap/custom-elements.js"></script>
+
+ <!-- Configuración de todas las páginas con JavaSript. -->
+ <script type="module" src="js/configura.js"></script>
+ <link rel="stylesheet" href="css/estilos.css">
+ <link rel="stylesheet" href="css/transicion_completa.css">
+ <link rel="stylesheet" href="css/transicion_pestanas.css">
+ <link rel="stylesheet" href="css/dark-hc.css">
+ <link rel="stylesheet" href="css/dark.css">
+ <link rel="stylesheet" href="css/light.css">
+ <link rel="stylesheet" href="css/light-mc.css">
+ <link rel="stylesheet" href="css/light-hc.css">
+
+
+</head>
+
+<body>
+
+    <h1>Chistes</h1> 
+ <md-top-app-bar class="center-aligned">
+
+  <nav-tab-fixed id="tab"></nav-tab-fixed>
+ <!--<button is="md-menu-button" slot="navigation"></button>-->
+
+
+ </md-top-app-bar>
+
+
+  <form action="" id="form" novalidate onsubmit="procesa(event)">
+    <main>
+    <p>
+        <p>
+            Selecciona un integrante y descubre el chiste que colocó.
+        </p>
+
+        <!--CAMBIAR NOMBRE DE LAS CLASES-->
+        <span  class="md-filled-text-field" accesskey="G">
+            <md-select-menu id="selectGenero" required options="opcionesDeGenero"
+           oninput="copiaMensajes()"></md-select-menu>
+            <span>Integrante*</span>
+            <small id="supportingGenero">Obligatorio</small>
+        </span>
+    </p>
+
+    <p>
+        <button class="md-filled-button" style="width: 100%;">Enviar</button>
+    </p>
+    </main>
+
+    <md-options-menu id="opcionesDeGenero" aria-label="Opciones de genero">
+        <span data-value="" title="Selecciona opción"></span>
+        <span data-value="Edher">Edher</span>
+        <span data-value="Sehas">Sehas</span>
+        <span data-value="Enrique">Enrique</span>
+        <span data-value="Ronaldo">Ronaldo</span>
+        <span data-value="Alexandra">Alexandra</span>
+        <span data-value="Ana Lilia">Ana Lilia</span>
+        <span data-value="Edgar">Edgar</span>
+        <span data-value="Andres">Andrés</span>
+       </md-options-menu>
+       <nav-drw></nav-drw>
+  </form>
+
+  <script type="module">
+    import { muestraTextoDeAyuda } from "./lib/js/muestraTextoDeAyuda.js"
+    import { exportaAHtml } from "./lib/js/exportaAHtml.js"
+    import { muestraError } from "./lib/js/muestraError.js"
+
+    function copiaMensajes() {
+   muestraTextoDeAyuda(selectGenero, supportingGenero, "Obligatorio")
+  }
+  exportaAHtml(copiaMensajes)
+
+   /**
+   * @param {SubmitEvent} evt
+   */
+   function procesa(evt) {
+   evt.preventDefault()
+   try {
+    copiaMensajes()
+    if (
+     selectGenero.validity.valid) {
+     const genero = selectGenero.value
+     const resultado = recomienda(genero)
+     alert(resultado)
+    }
+   } catch (e) {
+    muestraError(e)
+   }
+  }
+  exportaAHtml(procesa)
+
+  /** @param {string} genero */
+  function recomienda(genero) {
+   if (genero === "Edher") {
+    return "-Camarero, este filete tiene muchos nervios. "+
+    "-Normal, es la primera vez que se lo comen."
+   } else if (genero === "Sehas") {
+    return "-¿Sabes cuál es el café más peligroso del mundo?"+
+    "-El ex-preso"
+   }else if (genero === "Enrique") {
+    return "¿Por qué el tomate no toma café?" +
+    "-Porque toma-te"
+   }else if (genero === "Ronaldo") {
+    return "-¿Qué le dice un gusano a otro gusano?" +
+    "-Voy a dar una vuelta a la manzana."
+   }else if (genero === "Alexandra") {
+    return "¿Qué hace una abeja en el gimnasio?" +
+    "-Zum-ba"
+   }else if (genero === "Ana Lilia") {
+    return "-¿Cómo se depiden los químicos?"+
+    "-Ácido un placer."
+   }else if (genero === "Edgar") {
+    return "-¿Cómo se dice pañuelo en chino?" +
+    "-Sacamoco"
+   }else if (genero === "Andres") {
+    return "-Doctor, tengo complejo de feo." +
+    "-No es un complejo, usted es feo de verdad."
+   }
+  }
+
+  </script>
+ 
+ <nav-drw></nav-drw>
+
+</body>
+
+</html>
