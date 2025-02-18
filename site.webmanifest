@@ -2,7 +2,7 @@
     "short_name": "LocationFile",
     "name": "LocationFile",
     "id": "/index.html",
-    "start_url": "/locationfile/index.html",
+    "start_url": "pwa-subida/locationfile/index.html",
     "display": "standalone",
     "theme_color": "#fffbfe",
     "background_color": "#fffbfe",
